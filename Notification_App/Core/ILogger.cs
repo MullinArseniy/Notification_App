@@ -1,0 +1,11 @@
+﻿namespace NotificationApp.Core
+{
+    public interface IAppLogger
+    {
+        void Info(string message);
+        void Warn(string message);
+        void Error(string message);
+        void Fatal(string message);
+        event Action<string, bool> OnLog;
+    }
+}
