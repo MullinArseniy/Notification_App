@@ -14,9 +14,16 @@ namespace NotificationApp.Services
 
         public void Send(string message)
         {
-            logger.Info($"Отправка SMS: '{message}'.");
-            // Имитация случайного исключения
-            throw new Exception("Исключение сервиса.");
+            if (message.Length > 500)
+            {
+                logger.Warn($"Сообщение слишком длинное ({message.Length} символов). Возможны проблемы с доставкой.");
+            }
+            else
+            {
+                logger.Info($"Отправка SMS: '{message}'.");
+                // Имитация случайного исключения
+                throw new Exception("Исключение сервиса.");
+            }
         }
     }
 }

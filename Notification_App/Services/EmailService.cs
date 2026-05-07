@@ -14,9 +14,16 @@ namespace NotificationApp.Services
 
         public void Send(string message)
         {
-            logger.Info($"Отправка сообщения: '{message}' через Email.");
-            // Имитация работы сервиса
-            logger.Info("Успешно отправлено.");
+            if (message.Length > 500)
+            {
+                logger.Warn($"Сообщение слишком длинное ({message.Length} символов). Возможны проблемы с доставкой.");
+            }
+            else
+            {
+                logger.Info($"Отправка сообщения: '{message}' через Email.");
+                // Имитация работы сервиса
+                logger.Info("Успешно отправлено.");
+            }
         }
     }
 }

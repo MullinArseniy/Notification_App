@@ -14,8 +14,15 @@ namespace NotificationApp.Services
 
         public void Send(string message)
         {
-            logger.Info($"Отправка Push: '{message}'.");
-            logger.Info("Push уведомление доставлено.");
+            if (message.Length > 500)
+            {
+                logger.Warn($"Сообщение слишком длинное ({message.Length} символов). Возможны проблемы с доставкой.");
+            }
+            else
+            {
+                logger.Info($"Отправка Push: '{message}'.");
+                logger.Info("Push уведомление доставлено.");
+            }
         }
     }
 }

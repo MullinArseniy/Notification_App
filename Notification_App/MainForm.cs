@@ -28,6 +28,7 @@ namespace NotificationApp
             cmbChannel.SelectedIndex = 0;
 
             this.logger.Info("Приложение запущено.");
+            this.logger.Info($"Загружено сервисов: {serviceMap.Count} ({string.Join(", ", serviceMap.Keys)}).");
         }
 
         private void OnLogReceived(string message, bool isError)
@@ -50,7 +51,7 @@ namespace NotificationApp
             else if (message.Contains("[WARN]"))
                 rtbLog.SelectionColor = Color.FromArgb(200, 120, 0);
             else
-                rtbLog.SelectionColor = Color.FromArgb(30, 40, 60);
+                rtbLog.SelectionColor = Color.FromArgb(180, 220, 255);
 
             rtbLog.AppendText(message + Environment.NewLine);
             rtbLog.SelectionColor = rtbLog.ForeColor;
